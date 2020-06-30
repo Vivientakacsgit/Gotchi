@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/gotchi.iml" filepath="$PROJECT_DIR$/gotchi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/gotchi.iml" filepath="$PROJECT_DIR$/.idea/gotchi.iml" />
     </modules>
   </component>
 </project>
