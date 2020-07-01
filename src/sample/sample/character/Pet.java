@@ -7,10 +7,12 @@ public class Pet {
     private int id;
     private int level = 0;
     private int xp = 0;
-    private final int levelUpLimit = 100;
+    private int levelUpLimit = 100;
     private Util util = new Util();
     private boolean inAction = false;
     private String action;
+    private int inactiveStep = 0;
+
 
     public Pet(String name) {
         this.name = name;
@@ -18,62 +20,121 @@ public class Pet {
     }
 
     public void doSomething() {
-
-        if(inAction){
+        if (inAction) {
             System.out.println("Im already in action");
-            System.out.println(action);
-        }else{
-            if(util.doItOrDont(50)){
+            inactiveStep ++;
+        } else {
+            if (util.doItOrDont(1)) {
+                System.out.println("I choose someting to do");
                 inAction = true;
                 action = util.choseAction();
-                System.out.println("I choose someting to do");
-            }else{
+            } else {
                 System.out.println("I dont do anything");
             }
         }
     }
 
 
+    public void play() {
+        if (action.equals("bored")) {
+            clearAction();
+            raiseXp(30);
 
-
-    public void play(){
-        if(action.equals("bored")){
-            inAction = false;
-            action = "";
-        }
-        else{
+        } else {
             System.out.println("wrong");
         }
     }
 
-    public void learn(){
-        if(action.equals("bored")){
-            inAction = false;
+    public void learn() {
+        if (action.equals("bored")) {
+            clearAction();
+            raiseXp(50);
+        } else {
+            System.out.println("wrong");
+        }
+    }
+
+    public void eat() {
+        if (action.equals("hungry")) {
+            clearAction();
+            raiseXp(10);
+        } else {
+            System.out.println("wrong");
+        }
+    }
+
+    public void sleep() {
+        if (action.equals("tired")) {
+            clearAction();
+            raiseXp(15);
+
+        } else {
+            System.out.println("wrong");
+            wrongButtonPressed();
+        }
+    }
+
+    private void wrongButtonPressed() {
+        xp -= 5;
+    }
+
+
+    public void status() {
+        System.out.println("Pet{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", level=" + level +
+                ", xp=" + xp +
+                ", action='" + action + '\'' +
+                '}');
+    }
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", level=" + level +
+                ", xp=" + xp +
+                ", action='" + action + '\'' +
+                '}';
+    }
+
+
+    private void clearAction() {
+        inAction = false;
         action = "";
-        }else{
-            System.out.println("wrong");
-        }
-    }
-    public void eat(){
-        if(action.equals("hungry")) {
-            inAction = false;
-            action = "";
-        }
-        else{
-            System.out.println("wrong");
-        }
+        inactiveStep = 0;
     }
 
-    public void sleep(){
-        if(action.equals("tired")) {
-            inAction = false;
-            action = "";
-        }
-        else{
-            System.out.println("wrong");
+
+    private void raiseXp(int num){
+        xp += num;
+    }
+
+
+    public int getLevelUpLimit() {
+        return levelUpLimit;
+    }
+
+    public void handleXP() {
+        if(xp > levelUpLimit){
+            level ++;
+            xp = xp - levelUpLimit;
+            levelUpLimit = levelUpLimit * 2;
         }
     }
 
 
+    public void handleInactive() {
+        if(inAction){
+            inactiveStep ++;
+            System.out.println(inactiveStep);
+            if(inactiveStep > 2){
+                xp -= 10;
+            }
+        }
 
+
+    }
 }

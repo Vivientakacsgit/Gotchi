@@ -21,6 +21,9 @@ public class Game {
             @Override
             public void run() {
                 System.out.println("step");
+                pet.handleInactive();
+                pet.handleXP();
+                pet.status();
                 pet.doSomething();
 
             }
