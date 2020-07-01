@@ -10,17 +10,44 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
+import sample.game.Game;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import static java.lang.Thread.sleep;
 
 
 public class Main extends Application {
-    Button btn;
-    Scene scene;
-    StackPane root;
-
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("Gotchi.fxml"));
+        primaryStage.setTitle("Gotchi");
+        primaryStage.setScene(new Scene(root, 1024, 768));
+        primaryStage.show();
+
+    }
+
+
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 //        Button btn = new Button();
 //        btn.setText("alma");
 //        btn.setOnAction(new EventHandler<ActionEvent>() {
@@ -37,22 +64,3 @@ public class Main extends Application {
 //        primaryStage.setScene(scene);
 //
 //        primaryStage.show();
-
-        Parent root = FXMLLoader.load(getClass().getResource("Gotchi.fxml"));
-
-        primaryStage.setTitle("Gotchi");
-        primaryStage.setScene(new Scene(root, 1024, 768));
-        primaryStage.show();
-
-    }
-
-    private void delete(Stage primaryStage){
-
-
-
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-}

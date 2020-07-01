@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import sample.game.Game;
 
 import javax.swing.text.html.HTML;
 import java.awt.*;
@@ -15,12 +16,18 @@ import java.util.ResourceBundle;
 public class Controller {
 
 
+    @FXML
+    public Label mainPane;
 
 
     @FXML
-    public void start(ActionEvent actionEvent) {
-        System.out.println("start pressed");
+    public void startGame(ActionEvent actionEvent){
+        Game game = new Game();
+        game.start();
+        mainPane.setVisible(false);
     }
+
+
 
 
 
