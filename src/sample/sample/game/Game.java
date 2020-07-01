@@ -3,7 +3,6 @@ package sample.game;
 import sample.character.Pet;
 
 public class Game {
-
     private Pet pet;
 
     public Game(Pet pet) {
@@ -16,9 +15,7 @@ public class Game {
                 pet.handleXP();
                 pet.status();
                 pet.doSomething();
-
     }
-
 
 
     public Pet getPet() {

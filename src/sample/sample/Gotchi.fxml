@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -22,7 +24,15 @@
                   <Button fx:id="learnButton" layoutX="39.0" layoutY="215.0" mnemonicParsing="false" onAction="#learn" text="Learn" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="petArea" layoutX="153.0" layoutY="110.0" prefHeight="523.0" prefWidth="666.0" style="-fx-border-color: black;" />
+            <AnchorPane fx:id="petArea" layoutX="153.0" layoutY="110.0" prefHeight="523.0" prefWidth="666.0" style="-fx-border-color: black;">
+               <children>
+                  <ImageView id="characterImage" fx:id="characterImage" fitHeight="523.0" fitWidth="740.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/gotchiAdult.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+            
             <AnchorPane fx:id="statusArea" layoutX="153.0" layoutY="14.0" prefHeight="83.0" prefWidth="666.0" style="-fx-border-color: black;" />
             <AnchorPane fx:id="messageBox" layoutX="153.0" layoutY="644.0" prefHeight="117.0" prefWidth="666.0" style="-fx-border-color: black;">
                <children>
