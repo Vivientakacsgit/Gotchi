@@ -25,12 +25,15 @@ public class Controller {
     public Button startButton;
     public AnchorPane gamePane;
     public AnchorPane menuPane;
+    @FXML
+    private ImageView medve;
 
 
     @FXML
     public void startGame() {
         menuPane.setVisible(false);
         gamePane.setVisible(true);
+        medve.setVisible(true);
         game = new Game(new Pet("Medve"));
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
