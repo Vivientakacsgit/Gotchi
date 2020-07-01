@@ -15,22 +15,15 @@ public class Game {
         this.pet = pet;
     }
 
-    public void start() {
-        Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
+    public void step() {
                 System.out.println("step");
                 pet.handleInactive();
                 pet.handleXP();
                 pet.status();
                 pet.doSomething();
 
-            }
-        };
-        timer.schedule(timerTask,0,5000
-        );
     }
+
 
 
     public Pet getPet() {

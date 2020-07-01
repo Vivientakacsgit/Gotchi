@@ -10,7 +10,7 @@ public class Pet {
     private int levelUpLimit = 100;
     private Util util = new Util();
     private boolean inAction = false;
-    private String action;
+    private String action = "...";
     private int inactiveStep = 0;
 
 
@@ -63,6 +63,10 @@ public class Pet {
         }
     }
 
+    public String getAction() {
+        return action;
+    }
+
     public void sleep() {
         if (action.equals("tired")) {
             clearAction();
@@ -103,7 +107,7 @@ public class Pet {
 
     private void clearAction() {
         inAction = false;
-        action = "";
+        action = "...";
         inactiveStep = 0;
     }
 
