@@ -8,7 +8,6 @@ public class Pet {
     private int level = 0;
     private int xp = 0;
     private int levelUpLimit = 100;
-    private Util util = new Util();
     private boolean inAction = false;
     private String action = "...";
     private int inactiveStep = 0;
@@ -24,10 +23,10 @@ public class Pet {
             System.out.println("Im already in action");
             inactiveStep ++;
         } else {
-            if (util.doItOrDont(1)) {
+            if (Util.doItOrDont(1)) {
                 System.out.println("I choose someting to do");
                 inAction = true;
-                action = util.choseAction();
+                action = Util.chooseAction();
             } else {
                 System.out.println("I dont do anything");
             }

@@ -1,21 +1,10 @@
 package sample;
 
-import com.sun.webkit.dom.XPathResultImpl;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.scene.control.*;
-import sample.game.Game;
-
-import java.util.Timer;
-import java.util.TimerTask;
-
-import static java.lang.Thread.sleep;
 
 
 public class Main extends Application {
