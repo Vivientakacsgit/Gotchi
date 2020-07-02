@@ -36,6 +36,7 @@ public class Controller {
     @FXML
     private ImageView medve;
 
+    private boolean scene = false;
 
 
 
@@ -46,7 +47,6 @@ public class Controller {
     FileInputStream input = new FileInputStream("resources/images/gotchiAdult.png");
     Image image = new Image(input);
     ImageView imageView = new ImageView(image);*/
-
 
 
     public Controller() throws FileNotFoundException {
@@ -76,19 +76,62 @@ public class Controller {
 
     @FXML
     public void refreshScreen() {
+        if (scene) {
+            scene = false;
+        } else {
+            scene = true;
+        }
         levelLabel.setText(game.getPet().getName() + " is lvl " + game.getPet().getLevel() + "   XP: " + game.getPet().getXp());
-        if(game.getPet().getAction().equals("   ")){
+        if (game.getPet().getAction().equals("   ")) {
             setTextBox("");
-        }else{
+        } else {
             setTextBox(" I`m " + game.getPet().getAction());
 
         }
-        if(game.getPet().getAction().equals("bored")) {
-            characterImage.setImage(new Image("resources/images/gotchiAdult.png"));
+        Image img = null;
+        switch (game.getPet().getAction()) {
+            case "bored":
+                if (scene) {
+                    img = new Image("resources/images/gotchiLeft.png");
+                } else {
+                    img = new Image("resources/images/gotchiRight.png");
+                }
+                break;
+
+            case "tired":
+                if (scene) {
+                    img = new Image("resources/images/gotchiAdult.png");
+                } else {
+                    img = new Image("resources/images/gotchiTired (1).png");
+                }
+                break;
+
+            case "hungry":
+                if (scene) {
+                    img = new Image("resources/images/gotchiHappy.png");
+                } else {
+                    img = new Image("resources/images/gotchiHappy2.png");
+                }
+                break;
+
+            case "sleeping":
+                img = new Image("resources/images/gotchiSleep.png");
+                break;
+
+            case "learning":
+                img = new Image("resources/images/gotchiLearn.png");
+                break;
+
+            case "playing":
+                img = new Image("resources/images/gotchiPlay.png");
+                break;
+
+            case "eating":
+                img = new Image("resources/images/gotchiFeed2.png");
+                break;
         }
-        if(game.getPet().getAction().equals("learning")){
-            characterImage.setImage(new Image("resources/images/gotchiLearn.png"));
-        }
+
+        characterImage.setImage(img);
 
 
     }
