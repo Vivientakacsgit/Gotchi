@@ -9,8 +9,12 @@ public class Pet {
     private int xp = 0;
     private int levelUpLimit = 100;
     private boolean inAction = false;
-    private String action = "...";
+    private boolean inMood = false;
+
+    private String action = "   ";
     private int inactiveStep = 0;
+    private int energy = 10;
+    private int endOfActivity = 0;
 
 
     public Pet(String name) {
@@ -18,14 +22,20 @@ public class Pet {
         this.id = 1;
     }
 
+    public int getXp() {
+        return xp;
+    }
+
     public void doSomething() {
-        if (inAction) {
-            System.out.println("Im already in action");
-            inactiveStep ++;
+        if (inMood || inAction) {
+            System.out.println("Im already in action or mood");
+            if(inMood){
+                inactiveStep++;
+            }
         } else {
             if (Util.doItOrDont(1)) {
-                System.out.println("I choose someting to do");
-                inAction = true;
+                System.out.println("I choose something to do");
+                inMood = true;
                 action = Util.chooseAction();
             } else {
                 System.out.println("I dont do anything");
@@ -36,8 +46,9 @@ public class Pet {
 
     public void play() {
         if (action.equals("bored")) {
-            clearAction();
             raiseXp(30);
+            changeAction("playing");
+            startActivity();
 
         } else {
             System.out.println("wrong");
@@ -46,30 +57,38 @@ public class Pet {
 
     public void learn() {
         if (action.equals("bored")) {
-            clearAction();
             raiseXp(50);
+            changeAction("learning");
+            startActivity();
+
+
+
         } else {
             System.out.println("wrong");
         }
     }
+
 
     public void eat() {
         if (action.equals("hungry")) {
-            clearAction();
             raiseXp(10);
+            changeAction("eating");
+            startActivity();
+
+
+
         } else {
             System.out.println("wrong");
         }
     }
 
-    public String getAction() {
-        return action;
-    }
 
     public void sleep() {
         if (action.equals("tired")) {
-            clearAction();
             raiseXp(15);
+            changeAction("sleeping");
+            startActivity();
+
 
         } else {
             System.out.println("wrong");
@@ -77,10 +96,48 @@ public class Pet {
         }
     }
 
+
     private void wrongButtonPressed() {
-        xp -= 5;
+        if (xp < 5) {
+            xp = 0;
+        } else {
+            xp -= 5;
+        }
     }
 
+    public void setEndOfActivity() {
+        this.endOfActivity = 2;
+    }
+
+    public void handleActivity() {
+        if (endOfActivity > 0) {
+            inAction = false;
+            endOfActivity = 2;
+        } else {
+            endOfActivity--;
+        }
+    }
+
+
+    public void startActivity(){
+        inactiveStep = 0;
+        inMood = false;
+        inAction = true;
+        endOfActivity = 3;
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public int getLevel() {
+        return level;
+    }
 
     public void status() {
         System.out.println("Pet{" +
@@ -104,25 +161,21 @@ public class Pet {
     }
 
 
-    private void clearAction() {
-        inAction = false;
-        action = "...";
-        inactiveStep = 0;
+    private void changeAction(String action) {
+        this.action = action;
     }
 
 
-    private void raiseXp(int num){
+
+
+    private void raiseXp(int num) {
         xp += num;
     }
 
 
-    public int getLevelUpLimit() {
-        return levelUpLimit;
-    }
-
     public void handleXP() {
-        if(xp > levelUpLimit){
-            level ++;
+        if (xp > levelUpLimit) {
+            level++;
             xp = xp - levelUpLimit;
             levelUpLimit = levelUpLimit * 2;
         }
@@ -130,11 +183,15 @@ public class Pet {
 
 
     public void handleInactive() {
-        if(inAction){
-            inactiveStep ++;
+        if (inAction) {
+            inactiveStep++;
             System.out.println(inactiveStep);
-            if(inactiveStep > 2){
-                xp -= 10;
+            if (inactiveStep > 2) {
+                if (xp < 10) {
+                    xp = 0;
+                } else {
+                    xp -= 10;
+                }
             }
         }
 

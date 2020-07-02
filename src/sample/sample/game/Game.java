@@ -10,11 +10,17 @@ public class Game {
     }
 
     public void step() {
-                System.out.println("step");
-                pet.handleInactive();
-                pet.handleXP();
-                pet.status();
-                pet.doSomething();
+        System.out.println("step");
+        pet.doSomething();
+
+
+
+
+        pet.handleInactive();
+        pet.handleXP();
+        pet.status();
+        pet.handleActivity();
+
     }
 
 
