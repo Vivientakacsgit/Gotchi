@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,6 +27,7 @@ public class Controller {
     public ImageView characterImage;
     public TextField nameInput;
     public Label levelLabel;
+    public Label levelUpBox;
     private Game game;
     public AnchorPane mainPane;
     public Button startButton;
@@ -36,16 +38,6 @@ public class Controller {
     private ImageView medve;
 
     private boolean scene = false;
-
-
-
-
-
-
-    /*@FXML
-    FileInputStream input = new FileInputStream("resources/images/gotchiAdult.png");
-    Image image = new Image(input);
-    ImageView imageView = new ImageView(image);*/
 
 
     public Controller() throws FileNotFoundException {
@@ -64,7 +56,6 @@ public class Controller {
             @Override
             public void run() {
                 game.step();
-
             }
         };
         timer.schedule(timerTask, 0, 3000);
@@ -80,12 +71,18 @@ public class Controller {
         } else {
             scene = true;
         }
+
         levelLabel.setText(game.getPet().getName() + " is lvl " + game.getPet().getLevel() + "   XP: " + game.getPet().getXp());
+        if (game.getPet().isLvlUp()){
+            levelUpBox.setVisible(true);
+        } else {
+            levelUpBox.setVisible(false);
+        }
+
         if (game.getPet().getAction().equals("   ")) {
             setTextBox("");
         } else {
             setTextBox(" I`m " + game.getPet().getAction());
-
         }
         Image img = null;
         switch (game.getPet().getAction()) {

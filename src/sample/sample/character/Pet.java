@@ -26,6 +26,10 @@ public class Pet {
         return xp;
     }
 
+    public boolean isLvlUp() {
+        return lvlUp;
+    }
+
     public void doSomething() {
         if (inMood || inAction) {
             System.out.println("Im already in action or mood");
