@@ -88,7 +88,6 @@ public class Controller {
     }
 
 
-
     @FXML
     public void eat() {
         game.getPet().eat();

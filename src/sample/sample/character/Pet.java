@@ -166,8 +166,6 @@ public class Pet {
     }
 
 
-
-
     private void raiseXp(int num) {
         xp += num;
     }
