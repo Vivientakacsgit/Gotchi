@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Gotchi.fxml"));
         primaryStage.setTitle("Gotchi");
         primaryStage.setScene(new Scene(root, 1024, 768));
@@ -25,30 +25,3 @@ public class Main extends Application {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-//        Button btn = new Button();
-//        btn.setText("alma");
-//        btn.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent actionEvent) {
-//                System.out.println("alma");
-//                delete(primaryStage);
-//            }
-//        });
-//        root = new StackPane();
-//        root.getChildren().add(btn);
-//        scene = new Scene(root, 300, 200);
-//        primaryStage.setTitle("Gotchi");
-//        primaryStage.setScene(scene);
-//
-//        primaryStage.show();

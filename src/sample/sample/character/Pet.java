@@ -21,7 +21,7 @@ public class Pet {
     public void doSomething() {
         if (inAction) {
             System.out.println("Im already in action");
-            inactiveStep ++;
+            inactiveStep++;
         } else {
             if (Util.doItOrDont(1)) {
                 System.out.println("I choose someting to do");
@@ -111,7 +111,7 @@ public class Pet {
     }
 
 
-    private void raiseXp(int num){
+    private void raiseXp(int num) {
         xp += num;
     }
 
@@ -121,8 +121,8 @@ public class Pet {
     }
 
     public void handleXP() {
-        if(xp > levelUpLimit){
-            level ++;
+        if (xp > levelUpLimit) {
+            level++;
             xp = xp - levelUpLimit;
             levelUpLimit = levelUpLimit * 2;
         }
@@ -130,10 +130,10 @@ public class Pet {
 
 
     public void handleInactive() {
-        if(inAction){
-            inactiveStep ++;
+        if (inAction) {
+            inactiveStep++;
             System.out.println(inactiveStep);
-            if(inactiveStep > 2){
+            if (inactiveStep > 2) {
                 xp -= 10;
             }
         }
