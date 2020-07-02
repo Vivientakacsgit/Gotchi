@@ -72,14 +72,15 @@
                      </graphic></Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="petArea" layoutX="222.0" layoutY="112.0" prefHeight="532.0" prefWidth="677.0" style="-fx-border-color: chocolate; -fx-border-radius: 5; -fx-border-width: 3;" visible="false">
+            <AnchorPane fx:id="petArea" layoutX="222.0" layoutY="112.0" prefHeight="532.0" prefWidth="677.0" style="-fx-border-color: chocolate; -fx-border-radius: 5; -fx-border-width: 3;" visible="true">
                <children>
                   <ImageView id="characterImage" fx:id="characterImage" fitHeight="523.0" fitWidth="740.0" layoutX="69.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/images/gotchiAdult.png" />
                      </image>
                   </ImageView>
-               </children></AnchorPane>
+               </children>
+            </AnchorPane>
             
             <AnchorPane fx:id="statusArea" layoutX="153.0" layoutY="14.0" prefHeight="83.0" prefWidth="740.0" style="-fx-border-color: chocolate; -fx-border-radius: 5; -fx-border-width: 3;">
                <children>
