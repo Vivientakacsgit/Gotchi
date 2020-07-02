@@ -5,11 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import sample.character.Pet;
 import sample.game.Game;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -32,6 +35,22 @@ public class Controller {
 
     @FXML
     private ImageView medve;
+
+
+
+
+
+
+
+    /*@FXML
+    FileInputStream input = new FileInputStream("resources/images/gotchiAdult.png");
+    Image image = new Image(input);
+    ImageView imageView = new ImageView(image);*/
+
+
+
+    public Controller() throws FileNotFoundException {
+    }
 
 
     @FXML
@@ -63,6 +82,12 @@ public class Controller {
         }else{
             setTextBox(" I`m " + game.getPet().getAction());
 
+        }
+        if(game.getPet().getAction().equals("bored")) {
+            characterImage.setImage(new Image("resources/images/gotchiAdult.png"));
+        }
+        if(game.getPet().getAction().equals("learning")){
+            characterImage.setImage(new Image("resources/images/gotchiLearn.png"));
         }
 
 
