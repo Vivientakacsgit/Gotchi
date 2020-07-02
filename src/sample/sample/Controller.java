@@ -133,6 +133,7 @@ public class Controller {
         characterImage.setImage(img);
 
 
+
     }
 
     private void animation() {

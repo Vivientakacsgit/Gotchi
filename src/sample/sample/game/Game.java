@@ -12,10 +12,7 @@ public class Game {
     public void step() {
         System.out.println("step");
         pet.doSomething();
-
-
-
-
+        pet.handleLevelUp();
         pet.handleInactive();
         pet.handleXP();
         pet.status();

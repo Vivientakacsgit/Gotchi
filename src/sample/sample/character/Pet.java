@@ -10,7 +10,7 @@ public class Pet {
     private int levelUpLimit = 100;
     private boolean inAction = false;
     private boolean inMood = false;
-
+    private boolean lvlUp= false;
     private String action = "   ";
     private int inactiveStep = 0;
     private int energy = 10;
@@ -173,6 +173,7 @@ public class Pet {
 
     public void handleXP() {
         if (xp > levelUpLimit) {
+            lvlUp = true;
             level++;
             xp = xp - levelUpLimit;
             levelUpLimit = levelUpLimit * 2;
@@ -194,5 +195,11 @@ public class Pet {
         }
 
 
+    }
+
+    public void handleLevelUp() {
+        if(lvlUp){
+            lvlUp = false;
+        }
     }
 }
